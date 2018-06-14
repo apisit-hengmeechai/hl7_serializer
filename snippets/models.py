@@ -5,7 +5,7 @@ import uuid
 class PatientOrganization(models.Model):
     code_name = models.CharField(max_length=20)
     code_number = models.CharField(max_length=20, null=True, blank=True)
-    name = models.CharField(max_length=20, null=True, blank=True)
+    name = models.CharField(max_length=100, null=True, blank=True)
 
     @property
     def resource_type(self):
@@ -47,6 +47,7 @@ class PatientIdentifier(models.Model):
     @property
     def resource_type(self):
         return 'Identifier'
+
 
 class PatientCommunication(models.Model):
     patient = models.ForeignKey(Patient, related_name='communication_set', on_delete=models.CASCADE)
